@@ -1,0 +1,53 @@
+Dataset Validation Report
+Generated: $(date)
+==================================================
+
+Checking D_W_15K_V2...
+5. Dataset Statistics
+Total entities: 30000
+Training pairs: 3000
+Split ratio: 20.0% / 10.0% / 70.0%
+✅ Dataset validation PASSED!
+
+Checking D_Y_15K_V2...
+5. Dataset Statistics
+Total entities: 30000
+Training pairs: 3000
+Split ratio: 20.0% / 10.0% / 70.0%
+✅ Dataset validation PASSED!
+
+Checking EN_DE_15K_V2...
+5. Dataset Statistics
+Total entities: 30000
+Training pairs: 3000
+Split ratio: 20.0% / 10.0% / 70.0%
+✅ Dataset validation PASSED!
+
+Checking EN_FR_15K_V2...
+5. Dataset Statistics
+Total entities: 30000
+Training pairs: 3000
+Split ratio: 20.0% / 10.0% / 70.0%
+✅ Dataset validation PASSED!
+
+Checking fr_en...
+5. Dataset Statistics
+Total entities: 39654
+Training pairs: 4500
+Split ratio: 30.0% / 10.0% / 60.0%
+✅ Dataset validation PASSED!
+
+Checking zh_en...
+5. Dataset Statistics
+Total entities: 38960
+Training pairs: 3000
+Split ratio: 20.0% / 10.0% / 70.0%
+✅ Dataset validation PASSED!
+
+Checking ja_en...
+5. Dataset Statistics
+Total entities: 39594
+Training pairs: 3000
+Split ratio: 20.0% / 10.0% / 70.0%
+✅ Dataset validation PASSED!
+
