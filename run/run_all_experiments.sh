@@ -6,8 +6,8 @@ set -e  # Exit on error
 
 # Configuration
 REPETITIONS=3
-METHOD="RDGCN"
-CONFIG_FILE="./args/rdgcn_args_15K.json"
+METHOD="BootEA"
+CONFIG_FILE="./args/bootea_args_15K.json"
 SPLIT_PATH="721_5fold/1/"
 DATASET_DIR="../datasets"
 OUTPUT_BASE="../output/results"

@@ -68,13 +68,34 @@ pip install --upgrade pip
 
 # Install TensorFlow via pip (conda version has conflicts with Python 3.6)
 echo ""
-echo "Installing TensorFlow 1.12 via pip..."
-pip install tensorflow-gpu==1.12.0 || pip install tensorflow==1.12.0
+echo "Installing TensorFlow 1.12 with CUDA compatibility check..."
+pip install numpy==1.16.0  # Must install first for TF 1.12
+pip install scipy==1.2.1   # Must install first for TF 1.12
 
-# Install required packages from requirements.txt with compatible versions
+# Check CUDA version and install appropriate TensorFlow
+if command -v nvcc &> /dev/null; then
+    CUDA_VERSION=$(nvcc --version | grep "release" | sed -n 's/.*release \([0-9]\+\.[0-9]\+\).*/\1/p')
+    echo "✓ Detected CUDA version: $CUDA_VERSION"
+    
+    if [[ "$CUDA_VERSION" == "9.0" ]]; then
+        echo "Installing TensorFlow 1.12 GPU (CUDA 9.0)..."
+        pip install tensorflow-gpu==1.12.0
+    else
+        echo "⚠️  WARNING: CUDA $CUDA_VERSION detected, but TensorFlow 1.12 requires CUDA 9.0"
+        echo "Installing CPU-only TensorFlow 1.12 instead..."
+        echo "(GPU support will not be available)"
+        pip install tensorflow==1.12.0
+    fi
+else
+    echo "No CUDA detected. Installing CPU-only TensorFlow 1.12..."
+    pip install tensorflow==1.12.0
+fi
+
+# Install required packages from requirements.txt
+echo ""
 echo "Installing packages from requirements.txt..."
-pip install numpy==1.16.0  # Compatible with TF 1.12 and Python 3.6
-pip install scipy==1.2.1   # Compatible with TF 1.12 and Python 3.6
+# Pin smart_open to version compatible with Python 3.6
+pip install 'smart_open<6.0.0'
 pip install -r requirements.txt
 
 # Install additional dependencies for TensorFlow 1.12
